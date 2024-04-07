@@ -6,9 +6,12 @@
 
 body {
     background-color: rgb(135, 240, 205);
+    background-image: linear-gradient(to bottom, rgb(95, 213, 95), rgb(26, 80, 11));
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: 1rem;
     align-items: center;
     overflow: hidden;
 }
@@ -19,6 +22,7 @@ body {
     background-color: black;
     display: flex;
     flex-direction: column;
+    border: 1px solid darkgreen;
 }
 
 .game-score {
@@ -26,10 +30,12 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    background-color: gainsboro;
+    background-color: rgb(21, 107, 59);
+    color: #25eb92;
 }
 
 .play-area {
+    background-color: rgb(34, 228, 92);
     width: 100%;
     height: 100%;
     display: grid;
@@ -38,10 +44,177 @@ body {
 }
 
 .snake {
-    background-color: green;
+    background-color: rgb(19, 160, 19);
     /* border-radius: 50%; */
+    border: 1px solid rgba(9, 39, 1, 0.721);
 }
-.food{
-    background-color: red;
+
+
+.food {
+    background-color: rgb(2, 35, 9);
     border-radius: 50%;
+    object-fit: contain;
+}
+
+.highScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+i {
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    background-image: linear-gradient(to right, rgb(31, 181, 31), greenyellow);
+}
+
+.popup-content {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: rgb(3, 37, 3);
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+video {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: none;
+    margin-block: 0 1rem;
+    filter: grayscale(2);
+    border-radius: 50%;
+}
+
+#playAgainButton {
+    padding: 0.5rem 1rem;
+    background-color: #133604;
+    color: #cdd8d1;
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#playAgainButton:hover {
+    background-color: #30825d;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    /* Darker blue on hover */
+}
+
+.player-controls {
+    /* display: grid; */
+    width: 80%;
+    gap: 0.2rem;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.player-controls button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #133604;
+    background-color: #21d344;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.player-controls button:hover {
+    transform: scale(1.1);
+    background-color: #319805;
+    color: #02280a;
+    transition: all 0.3s ease-in-out;
+}
+
+.up-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.left-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width:920px) {
+    .popup-content {
+        width: 220px;
+    }
+
+    video {
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .game-score {
+        display: flex;
+        align-items: center;
+        font-size: 0.5rem;
+    }
+
+    .player-controls {
+        display: flex;
+    }
 }
